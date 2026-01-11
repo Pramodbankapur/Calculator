@@ -1,0 +1,197 @@
+* {
+  box-sizing: border-box;
+}
+
+:root{
+  --page-bg:#eaeaea;
+   --calc-bg: #f4f4f4;
+  --display-bg: #000;
+  --display-text: #fff;
+
+  --btn-bg: #e0e0e0;
+  --btn-text: #000;
+
+  --operator-bg: #ff9500;
+  --equals-bg: #34C759;
+  --clear-bg: #FF3B30;
+}
+
+.dark {
+  --page-bg: #121212;
+  --calc-bg: #1e1e1e;
+  --display-bg: #000;
+  --display-text: #0f0;
+
+  --btn-bg: #2a2a2a;
+  --btn-text: #fff;
+
+  --operator-bg: #ff9f0a;
+  --equals-bg: #30d158;
+  --clear-bg: #ff453a;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------- */
+
+/* Container */
+.calculator {
+  overflow: hidden;
+  width: 320px;
+  background: var(--calc-bg);
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Display */
+.display {
+  background: var(--display-bg);
+  color: var(--display-text);
+  font-size: 48px;
+  text-align: right;
+  padding: 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Clear Button on top */
+.clearbutton {
+  background: #FF3B30;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s;
+}
+
+.clearbutton:hover {
+  background: #ff1e00;
+  transform: scale(1.05);
+}
+
+.clearbutton:active {
+  transform: scale(0.95);
+}
+
+/* Key Grid */
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 64px; /* IMPORTANT for row spanning */
+  gap: 12px;
+}
+
+
+
+/* Base button style */
+.keys button {
+  position: relative;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  height: 60px;
+
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  background: var(--btn-bg);
+  color: var(--btn-text);
+
+  box-shadow:
+    0 4px 0 rgba(0, 0, 0, 0.25),
+    0 8px 16px rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.2s ease;
+}
+
+
+.keys .operator {
+  background: linear-gradient(135deg, #ffb347, #ff9500);
+  color: #fff;
+}
+
+.keys .equals {
+  background: linear-gradient(135deg, #4cd964, #34c759);
+  color: #fff;
+}
+
+
+.keys .clearbutton {
+  grid-column: 1 / -1; /* span all 4 columns */
+  height: 50px;
+  background: var(--clear-bg);
+  color: #fff;
+}
+
+
+
+/* Hover and active for number buttons */
+.keys button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 0 rgba(0, 0, 0, 0.25),
+    0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.keys button:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.25),
+    0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.keys button:focus-visible {
+  outline: 3px solid #8fbbeb;
+  outline-offset: 3px;
+}
+
+
+
+.keys .clearbutton {
+  grid-column: span 4;
+  height: 50px;
+}
+
+/* Keyboard focus ring */
+button:focus {
+  outline: 2px solid #8fbbeb;
+  outline-offset: 2px;
+}
+
+
+/* media Quary and animations */
+.keys button:active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+/* Theme style */
+.themeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+}
