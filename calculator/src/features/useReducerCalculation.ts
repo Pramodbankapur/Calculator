@@ -1,4 +1,4 @@
-import type { CalculatorAction, CalculatorState, Operator } from "../types/calculatorTypes";
+import type { CalculatorAction, CalculatorState } from "../types/calculatorTypes";
 import { calculation } from "./calculation";
 
 export const initalState: CalculatorState = {
